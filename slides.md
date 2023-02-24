@@ -276,14 +276,14 @@ transition: slide-up
 transition: slide-left
 ---
 
-<div class="overflow-hidden absolute -top-10 text-center">
-  <iframe src="https://codesandbox.io/s/sweet-sanderson-yoko4o?file=/src/App.vue"
-    width="960"
+<div class="overflow-hidden absolute -top-10 text-center left-0 right-0">
+  <iframe src="https://codesandbox.io/s/bable-jscodeshift-gogocode-ast-yoko4o"
+    width="100%"
     height="560"
 ></iframe>
   <a
   class="text-blue-600"
-  href="https://codesandbox.io/s/sweet-sanderson-yoko4o?file=/src/App.vue"
+  href="https://codesandbox.io/s/bable-jscodeshift-gogocode-ast-yoko4o"
   >
     简单练手
   </a>
@@ -469,16 +469,26 @@ if(external?.length > 0 && 获取到的绝对路径存在){
 </a>
 
 ---
+layout: two-cols
+---
+# 使用效果
 
-<div class="overflow-hidden absolute -top-10 text-center">
-  <iframe src="https://codesandbox.io/s/sweet-sanderson-yoko4o?file=/src/App.vue"
-    width="960"
-    height="560"
-></iframe>
-  <a
-  class="text-blue-600"
-  href="https://codesandbox.io/s/sweet-sanderson-yoko4o?file=/src/App.vue"
-  >
-     vite-plugin-remove-console的使用
-  </a>
-</div>
+```ts
+// vite.config.js
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import removeConsole from "../../dist/index.mjs";
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    // 配置
+    removeConsole({
+      externalValue: ["这个不能删除", "aa"]
+    })
+  ],
+});
+```
+::right::
+<div class='mt-16'></div>
+<img src="/leaveLog.png"/>
